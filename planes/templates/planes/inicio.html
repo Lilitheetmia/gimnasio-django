@@ -1,0 +1,33 @@
+{% extends 'planes/base.html' %}
+{% block title %}Inicio{% endblock %}
+
+{% block content %}
+<div class="text-center mb-5">
+    <h1 class="display-5">Bienvenido a <span class="text-primary">GymManager</span></h1>
+    <p class="lead">Sistema de gestión de planes de entrenamiento</p>
+</div>
+
+<div class="row">
+    <div class="col-md-6 mb-3">
+        <div class="card text-white bg-primary">
+            <div class="card-body">
+                <h5 class="card-title">Total de Planes</h5>
+                <p class="display-4 mb-0">{{ total }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 mb-3">
+        <div class="card text-white bg-success">
+            <div class="card-body">
+                <h5 class="card-title">Planes Activos</h5>
+                <p class="display-4 mb-0">{{ activos }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="text-center mt-4">
+    <a href="{% url 'planes:lista' %}" class="btn btn-dark btn-lg">Ver Planes</a>
+    <a href="{% url 'planes:crear' %}" class="btn btn-success btn-lg">+ Nuevo Plan</a>
+</div>
+{% endblock %}

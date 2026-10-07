@@ -1,0 +1,26 @@
+{% extends 'planes/base.html' %}
+{% block title %}Eliminar Plan{% endblock %}
+
+{% block content %}
+<div class="card p-4">
+    <h2 class="text-danger mb-4">🗑️ Eliminar Plan</h2>
+
+    <p>¿Estás seguro de que deseas eliminar el plan <strong>"{{ plan.nombre }}"</strong>?</p>
+    <p class="text-muted">Esta acción no se puede deshacer.</p>
+
+    <div class="card bg-light p-3 mb-3">
+        <ul class="mb-0">
+            <li><strong>Nivel:</strong> {{ plan.get_nivel_display }}</li>
+            <li><strong>Duración:</strong> {{ plan.duracion_semanas }} semanas</li>
+            <li><strong>Precio:</strong> ${{ plan.precio }}</li>
+            <li><strong>Entrenador:</strong> {{ plan.entrenador }}</li>
+        </ul>
+    </div>
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Sí, eliminar</button>
+        <a href="{% url 'planes:lista' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

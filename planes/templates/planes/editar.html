@@ -1,0 +1,25 @@
+{% extends 'planes/base.html' %}
+{% block title %}Editar Plan{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">✏️ Editar: <span class="text-primary">{{ plan.nombre }}</span></h2>
+
+<form method="post" class="card p-4">
+    {% csrf_token %}
+
+    {% for field in form %}
+        <div class="mb-3">
+            <label class="form-label fw-bold">{{ field.label }}</label>
+            {{ field }}
+            {% if field.errors %}
+                <div class="text-danger small mt-1">{{ field.errors|striptags }}</div>
+            {% endif %}
+        </div>
+    {% endfor %}
+
+    <div class="d-flex gap-2">
+        <button type="submit" class="btn btn-warning">Actualizar</button>
+        <a href="{% url 'planes:lista' %}" class="btn btn-secondary">Cancelar</a>
+    </div>
+</form>
+{% endblock %}
